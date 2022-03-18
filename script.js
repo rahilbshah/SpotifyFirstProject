@@ -9,6 +9,8 @@ let myVolume = document.getElementById("volumebtn");
 let next = document.getElementById("next");
 let previous = document.getElementById("previous");
 let currentTime=document.getElementById("currentTime")
+let durationTime=document.getElementById("durationTime")
+
 let songs = [
   {
     songName: "Let Me Love You",
@@ -201,10 +203,10 @@ audioElement.addEventListener("timeupdate", () => {
   min2 = parseInt(audioElement.duration / 60);
   sec2 = parseInt(audioElement.duration - 60 * min2);
   if (sec2 < 10) {
-    document.getElementById("durationTime").innerHTML =
+    durationTime.innerHTML =
       "0" + min2 + ":" + "0" + (sec2 + 1);
   } else {
-    document.getElementById("durationTime").innerHTML =
+    durationTime.innerHTML =
       "0" + min2 + ":" + (sec2 + 1);
   }
 });
