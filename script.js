@@ -8,7 +8,7 @@ let myProgressBar = document.getElementById("myProgressBar");
 let myVolume = document.getElementById("volumebtn");
 let next = document.getElementById("next");
 let previous = document.getElementById("previous");
-
+let currentTime=document.getElementById("currentTime")
 let songs = [
   {
     songName: "Let Me Love You",
@@ -216,21 +216,21 @@ audioElement.addEventListener("timeupdate", () => {
 
   if (sec >= 240) {
     sec = sec - 240;
-    document.getElementById("currentTime").innerHTML = "0" + min + ":" + sec;
+    currentTime.innerHTML = "0" + min + ":" + sec;
   } else if (sec >= 180) {
     sec = sec - 180;
-    document.getElementById("currentTime").innerHTML = "0" + min + ":" + sec;
+    currentTime.innerHTML = "0" + min + ":" + sec;
   } else if (sec >= 120) {
     sec = sec - 120;
-    document.getElementById("currentTime").innerHTML = "0" + min + ":" + sec;
+    currentTime.innerHTML = "0" + min + ":" + sec;
   } else if (sec >= 60) {
     sec = sec - 60;
-    document.getElementById("currentTime").innerHTML = "0" + min + ":" + sec;
+    currentTime.innerHTML = "0" + min + ":" + sec;
   }
 
   if (sec < 10) {
-    document.getElementById("currentTime").innerHTML = "0" + min + ":" + "0" + sec;
+    currentTime.innerHTML = "0" + min + ":" + "0" + sec;
   } else {
-    document.getElementById("currentTime").innerHTML = "0" + min + ":" + sec;
+    currentTime.innerHTML = "0" + min + ":" + sec;
   }
 });
