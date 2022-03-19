@@ -101,12 +101,12 @@ span {
   left: 10vw;
   font-family: "Varela Round", sans-serif;
 }
-#currentTime{
+#currentTime {
   position: absolute;
   left: 82px;
   top: 32px;
 }
-#durationTime{
+#durationTime {
   position: absolute;
   right: 82px;
   top: 32px;

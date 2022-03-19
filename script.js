@@ -2,14 +2,16 @@ console.log("Welcome To Spotify");
 //Intialize the variable
 let songIndex = 1;
 let audioElement = new Audio("songs/1.mp3");
+audioElement.volume = 1;
 let masterPlay = document.getElementById("masterPlay");
 let masterSongName = document.getElementById("masterSongName");
 let myProgressBar = document.getElementById("myProgressBar");
 let myVolume = document.getElementById("volumebtn");
 let next = document.getElementById("next");
 let previous = document.getElementById("previous");
-let currentTime=document.getElementById("currentTime")
-let durationTime=document.getElementById("durationTime")
+let currentTime = document.getElementById("currentTime");
+let durationTime = document.getElementById("durationTime");
+let songBar = document.getElementById("mySongBar");
 
 let songs = [
   {
@@ -89,6 +91,21 @@ document.addEventListener("keydown", (e) => {
     nextSong();
   }
 });
+document.addEventListener("keydown", (e) => {
+  if (e.code == "ArrowDown" && audioElement.volume > 0) {
+    volumeOfDecrease();
+  } else if (e.code == "ArrowUp" && audioElement.volume < 1) {
+    volumeOfIncrease();
+  }
+});
+function volumeOfDecrease() {
+  audioElement.volume -= 0.1;
+  console.log(audioElement.volume);
+}
+function volumeOfIncrease() {
+  audioElement.volume += 0.1;
+  console.log(audioElement.volume);
+}
 // --------------------------------------------------------------------------------------
 //Play Previous Song
 
@@ -203,11 +220,9 @@ audioElement.addEventListener("timeupdate", () => {
   min2 = parseInt(audioElement.duration / 60);
   sec2 = parseInt(audioElement.duration - 60 * min2);
   if (sec2 < 10) {
-    durationTime.innerHTML =
-      "0" + min2 + ":" + "0" + (sec2 + 1);
+    durationTime.innerHTML = "0" + min2 + ":" + "0" + (sec2 + 1);
   } else {
-    durationTime.innerHTML =
-      "0" + min2 + ":" + (sec2 + 1);
+    durationTime.innerHTML = "0" + min2 + ":" + (sec2 + 1);
   }
 });
 // ------------------------------------------------------------------------------------------
@@ -236,3 +251,7 @@ audioElement.addEventListener("timeupdate", () => {
     currentTime.innerHTML = "0" + min + ":" + sec;
   }
 });
+
+// myVolume.addEventListener("",()=>{
+//   songBar.style.display="inline"
+// })
