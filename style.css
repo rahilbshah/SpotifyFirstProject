@@ -68,6 +68,10 @@ span {
   width: 80vw;
   cursor: pointer;
 }
+#mySongBar{
+  display: none;
+  cursor: pointer;
+}
 .bottom {
   position: sticky;
   height: 130px;

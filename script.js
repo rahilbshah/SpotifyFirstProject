@@ -91,21 +91,6 @@ document.addEventListener("keydown", (e) => {
     nextSong();
   }
 });
-document.addEventListener("keydown", (e) => {
-  if (e.code == "ArrowDown" && audioElement.volume > 0) {
-    volumeOfDecrease();
-  } else if (e.code == "ArrowUp" && audioElement.volume < 1) {
-    volumeOfIncrease();
-  }
-});
-function volumeOfDecrease() {
-  audioElement.volume -= 0.1;
-  console.log(audioElement.volume);
-}
-function volumeOfIncrease() {
-  audioElement.volume += 0.1;
-  console.log(audioElement.volume);
-}
 // --------------------------------------------------------------------------------------
 //Play Previous Song
 
@@ -146,7 +131,6 @@ myProgressBar.addEventListener("change", () => {
   audioElement.currentTime =
     (myProgressBar.value * audioElement.duration) / 100;
 });
-
 // -----------------------------------------------------------------------------------
 //All Songs in Queue
 const makeAllPlays = () => {
@@ -251,7 +235,34 @@ audioElement.addEventListener("timeupdate", () => {
     currentTime.innerHTML = "0" + min + ":" + sec;
   }
 });
-
-// myVolume.addEventListener("",()=>{
-//   songBar.style.display="inline"
-// })
+// -----------------------------------------------------------------------------------------
+//Volume function
+document.addEventListener("keydown", (e) => {
+  if (e.code == "ArrowDown" && audioElement.volume > 0) {
+    volumeOfDecrease();
+  } else if (e.code == "ArrowUp" && audioElement.volume < 1) {
+    volumeOfIncrease();
+  }
+});
+function volumeOfDecrease() {
+  audioElement.volume -= 0.1;
+  // console.log(audioElement.volume);
+}
+function volumeOfIncrease() {
+  audioElement.volume += 0.1;
+  // console.log(audioElement.volume);
+}
+myVolume.addEventListener("mouseenter", () => {
+  songBar.style.display = "inline";
+  songBar.value = audioElement.volume * 100;
+});
+songBar.addEventListener("mouseenter",()=>{
+  songBar.style.display = "inline";
+  songBar.value = audioElement.volume * 100;
+})
+songBar.addEventListener("change",()=>{
+  audioElement.volume=songBar.value/100;
+})
+myVolume.addEventListener("mouseleave", () => {
+  songBar.style.display = "none";
+});
